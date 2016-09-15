@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Resistance is Futile</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.0/rzslider.min.css" />
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css" />
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.0/rzslider.min.js"></script>
+
+	</head>
+	<body ng-controller="mainCtrl">
+		<div class="container">
+			<h1 class="text-center">Resistance is Futile</h1>
+			
+			<form name="form1" ng-submit="query()" novalidate>
+				<legend>Reference Song Search</legend>
+			
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label for="">Song Name (required)</label>
+						<input type="text" class="form-control" id="input1" name="song_name" placeholder="song name" ng-model="song_name" required>
+					</div>
+				
+
+					<div class="form-group col-sm-6">
+						<label for="">Artist Name</label>
+						<input type="text" class="form-control" id="input2" name="artist_name" placeholder="artist name" ng-model="artist_name">
+					</div>
+				</div><!-- /.row -->
+				<div class="mySlider">
+					<rzslider rz-slider-model="slider.value" rz-slider-options="slider.options">
+					</rzslider>
+				</div>
+			
+				<button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid">Submit</button>
+			</form>
+			
+			<img src="tumblr_mgnte3bpTc1qh1g19o1_400.gif" alt="wormhole" ng-show="showWormhole" ng-cloak>
+			<form ng-show="showForm2" class="form2" ng-submit="query2()" ng-cloak>
+				<legend>Matching Songs</legend>
+
+				<div class="radio" ng-repeat="item in songMatches track by $index" ng-cloak>
+					<label>
+						<input name="form2input" type="radio" ng-model="$parent.songSelection" ng-value="{{$index}}" />
+						{{item.songName}} by {{item.artistName}} <!-- {{item.songId}} -->
+					</label>
+				</div>
+
+ 				<div class="row">
+					<div class="form-group col-sm-4">
+						<label for="">Number of Recommended Songs</label>
+						<input type="text" class="form-control" id="input3" name="numRecSongs" placeholder="number of recommended songs" ng-model="numRecSongs">
+					</div>
+					<div class="form-group col-sm-4">
+						<label for="">Max Number of Songs by the Same Artist</label>
+						<input type="text" class="form-control" id="input4" name="numSameArtist" placeholder="number of songs by the same artist" ng-model="numSameArtist">
+					</div>
+					<div class="checkbox col-sm-4">
+					  <label><input type="checkbox" value="" id="useArtistRel" ng-model="userArtistRel">Use Artist Relationship</label>
+					</div>					
+					<legend> Optional </legend>
+					<div class="form-group col-sm-6">
+						<label for="">Enter your user name for personalized recommendations</label>
+						<input type="text" class="form-control" id="input5" name="userName" placeholder="user name" ng-model="userName">
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="">Influence of similar users</label>
+						<input type="text" class="form-control" id="input6" name="simUserParam" placeholder="" ng-model="simUserParam">
+					</div>
+				</div><!-- /.row -->
+			
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+			
+			<img src="66643-Animated-Burning-Guitar.gif" alt="guitar" ng-show="showGuitar" ng-cloak>
+			<div class="col-xs-12 results" ng-show="showResults" ng-cloak>
+			<hr />
+			<h2>Recommended Songs: </h2>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="row in recommendedSongs track by $index">{{row.songName}} by {{row.artistName}}, {{row.score}} </li>
+				</ul>
+			</div><!-- /.col-xs-12 results -->
+		</div><!-- /.container -->
+		
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		
+ 		<script src="js/app.js"></script>
+	</body>
+</html>

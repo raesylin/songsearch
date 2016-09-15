@@ -1,0 +1,82 @@
+$errorColor: #a94442;
+$sansFont: "Source Sans Pro", sans-serif;
+
+
+body {
+	background: gainsboro;
+	font-family: $sansFont;
+	font-weight: lighter;
+	font-size: 16px;
+}
+
+input, textarea, select, label {
+	font-family: inherit;
+	font-weight: lighter;
+}
+
+input.ng-invalid.ng-dirty {
+	border-color: $errorColor;
+	background: lighten($errorColor, 30%);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+ng-cloak {
+	display: none;
+}
+
+.form2 {
+	margin-top: 40px;
+}
+
+.mySlider {
+	width: 274px;
+	padding: 0;
+	margin: 10px;
+	text-align: center;
+}
+
+.rzslider .rz-bar {
+	width: 100%;
+	height: 11px;
+	background: url('/images/fill.png');
+	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0;
+}
+
+.rzslider .rz-pointer {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: -7px;
+	margin-left: -12px;
+	z-index: 200;
+	background: url('/images/slider-button.png');
+	background-repeat: no-repeat;
+	&::after {
+		height: 0px;
+		width: 0px;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+.rzslider .rz-bubble {
+	font-weight: bold;
+	color: white;
+	background: dimgrey;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	outline: none;
+	
+}
+
+.rzslider .rz-limit {
+	color: dimgrey;
+	font-weight: normal;
+	background: transparent;
+	border-radius: 0;
+}
