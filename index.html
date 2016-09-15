@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Resistance is Futile</title>
+		<title>Resistance is</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -41,20 +41,12 @@
 						<input type="text" class="form-control" id="input2" name="artist_name" placeholder="artist name" ng-model="artist_name">
 					</div>
 				</div><!-- /.row -->
-				<!-- ************************************************************** -->
-				<!-- ************************************************************** -->
-				<!-- Slider ********************************************************-->
-				<div class="mySlider">
-					<rzslider rz-slider-model="slider.value" rz-slider-options="slider.options">
-					</rzslider>
-				</div>
-				<!-- End of Slider ************************************************ -->
-				<!-- ************************************************************** -->
-				<!-- ************************************************************** -->
+				
+			
 				<button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid">Submit</button>
 			</form>
 			
-			<img src="tumblr_mgnte3bpTc1qh1g19o1_400.gif" alt="wormhole" ng-show="showWormhole" ng-cloak>
+			<img src="images/tumblr_mgnte3bpTc1qh1g19o1_400.gif" alt="wormhole" ng-show="showWormhole" ng-cloak>
 			<form ng-show="showForm2" class="form2" ng-submit="query2()" ng-cloak>
 				<legend>Matching Songs</legend>
 
@@ -66,14 +58,16 @@
 				</div>
 
  				<div class="row">
-					<div class="form-group col-sm-4">
-						<label for="">Number of Recommended Songs</label>
-						<input type="text" class="form-control" id="input3" name="numRecSongs" placeholder="number of recommended songs" ng-model="numRecSongs">
-					</div>
-					<div class="form-group col-sm-4">
-						<label for="">Max Number of Songs by the Same Artist</label>
-						<input type="text" class="form-control" id="input4" name="numSameArtist" placeholder="number of songs by the same artist" ng-model="numSameArtist">
-					</div>
+				<div class="mySlider col-sm-6">
+					<label for="">Number of Recommended Songs</label>
+					<rzslider rz-slider-model="numRecSongsSlider.value" rz-slider-options="numRecSongsSlider.options">
+					</rzslider>
+				</div>
+				<div class="mySlider col-sm-6">
+					<label for="">Max Fraction of Songs by the Same Artist</label>
+					<rzslider rz-slider-model="pctSameArtistSlider.value" rz-slider-options="pctSameArtistSlider.options">
+					</rzslider>
+				</div>
 					<div class="checkbox col-sm-4">
 					  <label><input type="checkbox" value="" id="useArtistRel" ng-model="userArtistRel">Use Artist Relationship</label>
 					</div>					
@@ -92,7 +86,7 @@
 			</form>
 
 			
-			<img src="66643-Animated-Burning-Guitar.gif" alt="guitar" ng-show="showGuitar" ng-cloak>
+			<img src="images/66643-Animated-Burning-Guitar.gif" alt="guitar" ng-show="showGuitar" ng-cloak>
 			<div class="col-xs-12 results" ng-show="showResults" ng-cloak>
 			<hr />
 			<h2>Recommended Songs: </h2>

@@ -2,7 +2,7 @@
 
 $.noConflict();
 
-var app = angular.module('app', ['rzModule'])
+angular.module('app', ['rzModule'])
 .controller('mainCtrl', ['$scope', '$http', function($scope, $http){
 	$scope.song_name = '';
 	$scope.artist_name = '';
@@ -10,25 +10,40 @@ var app = angular.module('app', ['rzModule'])
 	$scope.showGuitar = false;
 	$scope.showForm2 = false;
 	$scope.showResults = false;
-	$scope.numRecSongs = null;
-	$scope.numSameArtist = null;
+	$scope.numRecSongs = 10;
+	$scope.pctSameArtist = 30;
 	$scope.songMatches = [];
 	$scope.songSelection = null;
 	$scope.reccommendedSongs = [];
 	$scope.userName = '';
 	$scope.simUserParam = 0.5;
 
-	$scope.slider = {
-		value: 10,
-		options: {
-			floor: 0,
-			ceil: 10,
-			step: 1,
-			onChange: function(id, model, type) {
-				$scope.slider.modelValue = model;  // this is the value selected by the slider;you can upload this to the server.
+	$scope.numRecSongsSlider = {
+			value: $scope.numRecSongs,
+			options: {
+				floor: 0,
+				ceil: 100,
+				step: 1,
+				onChange: function(id, model, type) {
+					$scope.numRecSongs = model;  // this is the value selected by the slider;you can upload this to the server.
+				}
 			}
-		}
-	};
+		};
+
+	$scope.pctSameArtistSlider = {
+			value: $scope.pctSameArtist,
+			options: {
+				floor: 0,
+				ceil: 100,
+				step: 1,
+				translate: function(value) {
+					return value+'%';
+				},
+				onChange: function(id, model, type) {
+					$scope.pctSameArtist = model;
+				}
+			}
+		};
 
 	$scope.query = function() {
 		
@@ -60,8 +75,8 @@ var app = angular.module('app', ['rzModule'])
 		$scope.showGuitar=true;
 		$scope.showResult=false;
 		$scope.reccommendedSongs = [];
-		$scope.numRecSongs = $scope.numRecSongs || "10";
-		$scope.numSameArtist = $scope.numSameArtist || "3";
+//		$scope.numRecSongs = $scope.numRecSongs || "10";
+//		$scope.numSameArtist = $scope.numSameArtist || "3";
 
 		var refSongId = $scope.songMatches[$scope.songSelection].songId;
 		var refArtistId = $scope.songMatches[$scope.songSelection].artistId;
@@ -72,7 +87,7 @@ var app = angular.module('app', ['rzModule'])
 //		console.log('numSameArtist = ' + $scope.numSameArtist);
 		
 		var url2 = 'http://10.11.255.204:9010/SongRecommendation?song_key='+refSongId+'&artist_key='
-			+refArtistId +'&num_recs=' + $scope.numRecSongs + '&num_same_artist='+$scope.numSameArtist 
+			+refArtistId +'&num_recs=' + $scope.numRecSongs + '&num_same_artist='+Math.floor($scope.pctSameArtist*$scope.numRecSongs/100)
 			+ '&user_name='+$scope.userName + '&sim_user_param='+$scope.simUserParam;  // the query url for form 2
 
 		// ajax request
