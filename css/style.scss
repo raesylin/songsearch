@@ -39,7 +39,7 @@ ng-cloak {
 .rzslider .rz-bar {
 	width: 100%;
 	height: 11px;
-	background: url('/images/fill.png');
+	background: url('../images/fill.png');
 	background-repeat: no-repeat;
 	margin: 0;
 	padding: 0;
@@ -52,7 +52,7 @@ ng-cloak {
 	top: -7px;
 	margin-left: -12px;
 	z-index: 200;
-	background: url('/images/slider-button.png');
+	background: url('../images/slider-button.png');
 	background-repeat: no-repeat;
 	&::after {
 		height: 0px;
