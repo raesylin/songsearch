@@ -58,29 +58,44 @@
 				</div>
 
  				<div class="row">
-				<div class="mySlider col-sm-6">
+				<div class="mySlider slider-group1 col-sm-4">
 					<label for="">Number of Recommended Songs</label>
+					<div class="sliderWrapper">
 					<rzslider rz-slider-model="numRecSongsSlider.value" rz-slider-options="numRecSongsSlider.options">
 					</rzslider>
+					</div>
 				</div>
-				<div class="mySlider col-sm-6">
+				<div class="mySlider slider-group1 col-sm-4">
 					<label for="">Max Fraction of Songs by the Same Artist</label>
+					<div class="sliderWrapper">
 					<rzslider rz-slider-model="pctSameArtistSlider.value" rz-slider-options="pctSameArtistSlider.options">
 					</rzslider>
+					</div>
 				</div>
-					<div class="checkbox col-sm-4">
-					  <label><input type="checkbox" value="" id="useArtistRel" ng-model="userArtistRel">Use Artist Relationship</label>
+				<div class="mySlider slider-group1 col-sm-4">
+					<label for="">Influence from similar artists (yes, you can demote similar artists)</label>
+					<div class="sliderWrapper">
+					<rzslider rz-slider-model="artistSimSlider.value" rz-slider-options="artistSimSlider.options">
+					</rzslider>
+					</div>
+				</div>
+				</div>
+
+					<div class="checkbox col-sm-12">
+					  <label><input type="checkbox" value="" id="useUserRel" ng-model="useUserRel">Use User Relationship</label>
 					</div>					
-					<legend> Optional </legend>
+
+					<div class = "row" ng-show="useUserRel">
 					<div class="form-group col-sm-6">
 						<label for="">Enter your user name for personalized recommendations</label>
 						<input type="text" class="form-control" id="input5" name="userName" placeholder="user name" ng-model="userName">
 					</div>
-					<div class="form-group col-sm-6">
+				<div class="mySlider col-sm-6">
 						<label for="">Influence of similar users</label>
-						<input type="text" class="form-control" id="input6" name="simUserParam" placeholder="" ng-model="simUserParam">
-					</div>
-				</div><!-- /.row -->
+					<rzslider rz-slider-model="userSimSlider.value" rz-slider-options="userSimSlider.options">
+					</rzslider>
+				</div>
+				</div>
 			
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>

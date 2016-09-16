@@ -51,11 +51,11 @@ ng-cloak {
 
 .rzslider .rz-bubble {
   font-weight: bold;
-  color: white;
-  background: dimgrey;
-  width: 24px;
+  color: dimgrey;
+/*  background: dimgrey;
+  width: 32px;
   height: 24px;
-  border-radius: 50%;
+  border-radius: 50%;*/
   outline: none; }
 
 .rzslider .rz-limit {
@@ -63,5 +63,7 @@ ng-cloak {
   font-weight: normal;
   background: transparent;
   border-radius: 0; }
+  
+
 
 /*# sourceMappingURL=style.css.map */

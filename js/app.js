@@ -17,7 +17,8 @@ angular.module('app', ['rzModule'])
 	$scope.reccommendedSongs = [];
 	$scope.userName = '';
 	$scope.simUserParam = 0.5;
-
+	$scope.simArtistParam = 0.0;
+	
 	$scope.numRecSongsSlider = {
 			value: $scope.numRecSongs,
 			options: {
@@ -41,6 +42,32 @@ angular.module('app', ['rzModule'])
 				},
 				onChange: function(id, model, type) {
 					$scope.pctSameArtist = model;
+				}
+			}
+		};
+
+	$scope.artistSimSlider = {
+			value: $scope.simArtistParam,
+			options: {
+				floor: -2,
+				ceil: 2,
+				step: 0.01,
+				precision: 2,
+				onChange: function(id, model, type) {
+					$scope.simArtistParam = model;
+				}
+			}
+		};
+
+	$scope.userSimSlider = {
+			value: $scope.simUserParam,
+			options: {
+				floor: 0,
+				ceil: 2,
+				step: 0.01,
+				precision: 2,
+				onChange: function(id, model, type) {
+					$scope.simUserParam = model;  // this is the value selected by the slider;you can upload this to the server.
 				}
 			}
 		};
@@ -88,7 +115,7 @@ angular.module('app', ['rzModule'])
 		
 		var url2 = 'http://10.11.255.204:9010/SongRecommendation?song_key='+refSongId+'&artist_key='
 			+refArtistId +'&num_recs=' + $scope.numRecSongs + '&num_same_artist='+Math.floor($scope.pctSameArtist*$scope.numRecSongs/100)
-			+ '&user_name='+$scope.userName + '&sim_user_param='+$scope.simUserParam;  // the query url for form 2
+			+ '&sim_artist_param='+$scope.simArtistParam+'&user_name='+$scope.userName + '&sim_user_param='+$scope.simUserParam;  // the query url for form 2
 
 		// ajax request
 		$http.get(url2)
