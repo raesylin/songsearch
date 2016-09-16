@@ -8,6 +8,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://use.fontawesome.com/d84df17e34.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.0/rzslider.min.css" />
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css" />
@@ -20,7 +21,7 @@
 		<![endif]-->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.0/rzslider.min.js"></script>
-		<script src="https://use.fontawesome.com/d84df17e34.js"></script>
+
 	</head>
 	<body ng-controller="mainCtrl">
 		<div class="container">
@@ -47,7 +48,7 @@
 			</form>
 			
 			<img src="images/tumblr_mgnte3bpTc1qh1g19o1_400.gif" alt="wormhole" ng-show="showWormhole" ng-cloak>
-			<form ng-show="showForm2" class="form2" ng-submit="query2()" ng-cloak>
+			<form ng-show="showForm2"  class="form2" ng-submit="query2()" ng-cloak>
 				<legend>Matching Songs</legend>
 
 				<div class="radio" ng-repeat="item in songMatches track by $index" ng-cloak>
@@ -57,44 +58,59 @@
 					</label>
 				</div>
 
- 				<div class="row">
-				<div class="mySlider slider-group1 col-sm-4">
-					<label for="">Number of Recommended Songs</label>
-					<div class="sliderWrapper">
-					<rzslider rz-slider-model="numRecSongsSlider.value" rz-slider-options="numRecSongsSlider.options">
-					</rzslider>
-					</div>
+ 				<div class="row mb-30">
+				<div class="slider-group1 col-sm-4">
+					<div class="mySlider">
+						<label for=""><i class="fa fa-cog" aria-hidden="true"></i> Number of Recommended Songs</label>
+						<div class="sliderWrapper">
+							<rzslider rz-slider-model="numRecSongsSlider.value" rz-slider-options="numRecSongsSlider.options">
+							</rzslider>
+						</div>
+					</div><!-- /.mySlider -->
+					
 				</div>
-				<div class="mySlider slider-group1 col-sm-4">
-					<label for="">Max Fraction of Songs by the Same Artist</label>
-					<div class="sliderWrapper">
-					<rzslider rz-slider-model="pctSameArtistSlider.value" rz-slider-options="pctSameArtistSlider.options">
-					</rzslider>
-					</div>
+				<div class="slider-group1 col-sm-4">
+					<div class="mySlider">
+						<label for=""><i class="fa fa-cog" aria-hidden="true"></i> Max Fraction of Songs by the Same Artist</label>
+						<div class="sliderWrapper">
+							<rzslider rz-slider-model="pctSameArtistSlider.value" rz-slider-options="pctSameArtistSlider.options">
+							</rzslider>
+						</div>
+					</div><!-- /.mySlider -->
+					
 				</div>
-				<div class="mySlider slider-group1 col-sm-4">
-					<label for="">Influence from similar artists (yes, you can demote similar artists)</label>
-					<div class="sliderWrapper">
-					<rzslider rz-slider-model="artistSimSlider.value" rz-slider-options="artistSimSlider.options">
-					</rzslider>
-					</div>
+				<div class="slider-group1 col-sm-4">
+					<div class="mySlider">
+						<label for=""><i class="fa fa-cog" aria-hidden="true"></i> Influence from similar artists (yes, you can demote similar artists)</label>
+						<div class="sliderWrapper">
+							<rzslider rz-slider-model="artistSimSlider.value" rz-slider-options="artistSimSlider.options">
+							</rzslider>
+						</div>
+					</div><!-- /.mySlider -->
+					
 				</div>
 				</div>
-
+				
+				<div class="row">
 					<div class="checkbox col-sm-12">
 					  <label><input type="checkbox" value="" id="useUserRel" ng-model="useUserRel">Use User Relationship</label>
-					</div>					
+					</div>
+				</div><!-- /.row -->
+									
 
-					<div class = "row" ng-show="useUserRel">
-					<div class="form-group col-sm-6">
-						<label for="">Enter your user name for personalized recommendations</label>
+				<div class="row mt-30" ng-show="useUserRel">
+					<div class="form-group col-sm-6 slider-group2">
+						<label for="userName">Enter your user name for personalized recommendations</label>
 						<input type="text" class="form-control" id="input5" name="userName" placeholder="user name" ng-model="userName">
 					</div>
-				<div class="mySlider col-sm-6">
-						<label for="">Influence of similar users</label>
-					<rzslider rz-slider-model="userSimSlider.value" rz-slider-options="userSimSlider.options">
-					</rzslider>
-				</div>
+					<div class="slider-group2 col-sm-6">
+						<div class="mySlider">
+							<label for=""><i class="fa fa-cog" aria-hidden="true"></i> Influence of similar users</label>
+							<rzslider rz-slider-model="userSimSlider.value" rz-slider-options="userSimSlider.options">
+							</rzslider>
+						</div><!-- /.mySlider -->
+						
+					</div>
 				</div>
 			
 				<button type="submit" class="btn btn-primary">Submit</button>
